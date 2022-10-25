@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+<h1>Все задание в консоле</h1>
+<img src="https://miro.medium.com/max/2400/1*_4bRXOwHTjpZhUMys1bNfQ.jpeg" width="100%" height="100%">
+<script>
+    console.log('1.Написать функцию, которая принимает 2 числа и возвращает -1, если первое меньше, чем второе; 1 – если первое больше, чем второе; и 0 – если числа равны.')
+
+    function myFunc(a = 0, b = 0){
+        if(a < b){
+            return -1;
+        }else if (a > b){
+            return 1;
+        }
+        return 0;
+    }
+    console.log(myFunc(3, 6));
+    console.log(myFunc(10, 5));
+    console.log(myFunc(7, 7));
+
+    console.log('2.Написать функцию, которая вычисляет факториал переданного ей числа.')
+
+    function factorial (n) {
+            let res = 1, i = 1;
+            if (n > 0 && (n)) {
+                
+                while (i <= n) {
+                    res *= i;
+                    i++;
+                }
+            } else if (n < 0) {
+                return "Пишите положительные число";
+            }
+            return res;
+        }
+        
+        console.log(factorial(5));
+        console.log(factorial(0));
+        console.log(factorial(-1));
+
+    console.log('3.Написать функцию, которая принимает три отдельные цифры и превращает их в одно число. Например: цифры 1, 4, 9 превратятся в число 149.')
+
+    function myFunc2 (a, b, c) {
+            if (a >= 0 && b >= 0 && c >= 0) {
+                return Number( `${a}${b}${c}` );
+            }
+            return 'Пишите положительные число';
+        }
+        
+        console.log(myFunc2(2, 5, 4));
+        console.log(myFunc2(2, -5, 4));
+    
+    console.log('4.Написать функцию, которая принимает длину и ширину прямоугольника и вычисляет его площадь. Если в функцию передали 1 параметр, то она вычисляет площадь квадрата.')
+
+    function square (a, b = a) {
+            if ( a >= 0 && b >= 0 ) {
+                return a * b;
+            } 
+        
+            return 'Пишите положительные число';
+        }
+        
+        console.log(square(7, 8));
+        console.log(square(6));     
+        console.log(square(7, 0)); 
+        console.log(square(-7, 4));  
+        console.log(square('a', 2)); 
+
+    console.log('5.Написать функцию, которая проверяет, является ли переданное ей число совершенным. Совершенное число – это число, равное сумме всех своих собственных делителей.')
+
+    function myFunc3(num) {        
+            let sum = 0;myFunc3
+        
+            for(let i = 1; i < num; i++) {
+                if (num % i === 0) {
+                    sum += i; 
+                }
+            } 
+            
+            if (sum === num) {
+                return true;
+            }
+            
+            return false;            
+        }; 
+
+        console.log(myFunc3(120));
+        console.log(myFunc3(496));
+        console.log(myFunc3(8128)); 
+
+    console.log('6.Написать функцию, которая принимает минимальное и максимальное значения для диапазона, и выводит только те числа из диапазона, которые являются совершенными. Используйте написанную ранее функцию, чтобы узнавать, совершенное число или нет.')
+        
+    function myFunc4 (min, max) {
+            let perfectNumbers = '';
+        
+            for (min; min <= max; min++) {
+                if (myFunc3(min)) {
+                    perfectNumbers = perfectNumbers + min.toString() + ',';
+                }
+            }
+        
+            if (perfectNumbers !== '') {
+                return perfectNumbers;
+            }
+        
+            return false;
+        };
+        
+        console.log(myFunc4 (3, 15000));
+
+    console.log('7.Написать функцию, которая принимает время (часы, минуты, секунды) и выводит его на экран в формате «чч:мм:сс». Если при вызове функции минуты и/или секунды не были переданы, то выводить их как 00.')
+  
+    function funcTime (h, m = 0, s = 0) {
+            if(h[0] !== 0 && h < 10) {
+                // h = '0' + h;
+                h = `0${h}`;
+            } else if (h == '') {
+                h = '00';
+            }
+            if(m[0] != 0 && m < 10) {
+                m = `0${m}`;
+            } else if (m == '') {
+                m = '00';
+            }
+            if(s[0] != 0 && s < 10) {
+                s = `0${s}`;
+            } else if (s == '') {
+                s = '00';
+            }
+        
+            return (`${h}:${m}:${s}`);
+        }
+        
+        console.log(funcTime (23, 5, 45)); 
+        console.log(funcTime (8));          
+        console.log(funcTime (2));      
+    
+    console.log('8.Написать функцию, которая принимает часы, минуты и секунды и возвращает это время в секундах.')
+
+    function funcTimeSeconds (h, m = 0, s = 0) {
+            h *= 3600;
+            m *= 60;
+            let result = h + m + s;
+        
+            return result;
+        }
+        
+        console.log(funcTimeSeconds (2) );
+        console.log(funcTimeSeconds (1, 52, 12) );
+        console.log(funcTimeSeconds (3, 10, 35) );
+
+    console.log('9.Написать функцию, которая принимает количество секунд, переводит их в часы, минуты и секунды и возвращает в виде строки «чч:мм:сс».')
+    
+    let funcTimeHours = (n) => {
+            let hoursFloat = n / 3600;
+            let hours = Math.floor(hoursFloat);
+            let minutes = Math.floor((hoursFloat - hours) * 60);
+            let seconds  = n - ((minutes * 60) + (hours * 3600));
+        
+            function addZero (num){
+                return num > 9 ? num : `0${num}`;
+            }
+        
+            return `${addZero(hours)}:${addZero(minutes)}:${addZero(seconds)}`;
+            }
+
+        console.log( funcTimeHours(851) );
+        console.log( funcTimeHours(7549) );
+
+    console.log('10.Написать функцию, которая считает разницу между датами. Функция принимает 6 параметров, которые описывают 2 даты, и возвращает результат в виде строки «чч:мм:сс». При выполнении задания используйте функции из предыдущих 2-х заданий: сначала обе даты переведите в секунды, узнайте разницу в секундах, а потом разницу переведите обратно в «чч:мм:сс».')
+
+    let funcTimeDate = (h, m = 0, s = 0, h1, m1 = 0, s1 = 0) => {
+            if (h == 0) {
+                h = 24;
+            }
+            let seconds = h * 3600 + m * 60 + s;
+            let seconds1 = h1 * 3600 + m1 * 60 + s1;
+            let secDifference = Math.abs(seconds1 - seconds);
+        
+            function Time(n) {
+                let hoursFloat = n / 3600;
+                let hours = Math.floor(hoursFloat);
+                let minutes = Math.floor((hoursFloat - hours) * 60);
+                let seconds  = n - ((minutes * 60) + (hours * 3600));
+                function addZero (num){
+                    return num > 9 ? num : `0${num}`;
+                }
+                return `${addZero(hours)}:${addZero(minutes)}:${addZero(seconds)}`;
+            }
+            return Time(secDifference);
+        };
+        
+        console.log(funcTimeDate(0, 10, 0, 10, 9, 0)); 
+        console.log(funcTimeDate(2, 6, 0, 5, 4, 10));  
+</script>
+</body>
+</html>

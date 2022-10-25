@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+<script>
+// 1...................................................................................................
+    // const car = {
+    //     manufacturer: 'Hyundai',
+    //     model: 'Tucson',
+    //     year: 2019,
+    //     averageSpeed: 120,
+    //     showInfo() {
+    //         console.log(`Производитель: ${this.manufacturer},\n модель: ${this.model},\n Cредняя скорость: ${this.averageSpeed} `);
+    //     },
+    //     getTravelTime(s = 0, restInterval = 1) {
+    //         if (isNaN(s) || isNaN(restInterval)) {
+    //             return 'Error';
+    //         }
+    //         let travelTime = s / this.averageSpeed;
+    //         let numberOfStops = Math.floor(travelTime / 4);
+    //         travelTime += numberOfStops * restInterval; 
+    //         return travelTime;
+    //     },
+    // }
+    // car.showInfo();
+    // console.log(car.getTravelTime(500));
+    // console.log(car.getTravelTime(800));
+
+// 2....................................................................................................
+    // const fraction1 = {
+    //     numerator : 1,
+    //     denominator : 5,
+    // }
+    // const showFraction = () => console.log(`${fraction1.numerator}/${fraction1.denominator}`); 
+    // console.log(showFraction(fraction1));             
+    // function makeFraction(numerator, denominator) {
+    //     return {
+    //         numerator, 
+    //         denominator, 
+    //     };
+    // }
+    // const fraction2 = makeFraction(2, 9);
+    // console.log(fraction2);
+    // const commonDenominator = (fraction1 = {}, fraction2 = {}) => {
+    //     return fraction1.denominator * fraction2.denominator;
+    // }
+    // const sumOfFractions = (fraction1 = {}, fraction2 = {}) => {
+    //     return `${fraction1.numerator * fraction2.denominator + fraction2.numerator * fraction1.denominator} / ${commonDenominator(fraction1, fraction2)}`;
+    // }
+    // console.log(sumOfFractions(fraction1, fraction2));
+    // console.log(sumOfFractions({numerator: 3, denominator: 5}, {numerator: 4, denominator: 5}));
+    // const subtractionOfFractions = (fraction1 = {}, fraction2 = {}) => {
+    //     return `${fraction1.numerator * fraction2.denominator - fraction2.numerator * fraction1.denominator} / ${commonDenominator(fraction1, fraction2)}`;
+    // }
+    // console.log(subtractionOfFractions(fraction1, fraction2));
+    // console.log(subtractionOfFractions({numerator: 7, denominator: 9}, {numerator: 2, denominator: 8}));
+    // const multiplicationOfFrations = (fraction1 = {}, fraction2 = {}) => {
+    //     return `${fraction1.numerator * fraction2.numerator}/${fraction1.denominator * fraction2.denominator}`;
+    // }
+    // console.log(multiplicationOfFrations(fraction1, fraction2));
+    // const divisionOfFrations = (fraction1 = {}, fraction2 = {}) => {
+    //     return `${fraction1.numerator * fraction2.denominator}/${fraction1.denominator * fraction2.numerator}`;
+    // }
+    // console.log(divisionOfFrations(fraction1, fraction2));
+    // const fractionReduction = (fraction = {}, coefficient) => {
+    //     return `${fraction.numerator / coefficient}/${fraction.denominator / coefficient}`
+    // }
+    // const fraction = makeFraction(3, 9);
+    // console.log(fractionReduction(fraction, 3));
+
+// 3...................................................................................................
+const time = {
+    h: 2,
+    m: 23,
+    s: 40,
+    showTime() {
+        console.log(`${this.h}:${this.m}:${this.s}`); 
+    },
+    changeSeconds(sec) {
+        let hours = sec / 3600;
+        this.h += Math.floor(hours);
+        let minutes = (sec - Math.floor(hours) * 3600) / 60;
+        this.m += Math.floor(minutes);
+        this.s = sec - (Math.floor(hours) * 3600) - (Math.floor(minutes) * 60);
+
+        if (this.s >= 60) {
+            this.s %= 60;
+            this.m += Math.floor(this.s / 60);
+        }
+        if (this.m >= 60) {
+            this.m %= 60;
+            this.h += Math.floor(this.m / 60);
+        }
+
+        return time;
+    },
+    changeMinutes(min) {
+        let hours = min / 60;
+        this.h += Math.floor(hours);
+        this.m += min - (Math.floor(hours) * 60);
+        
+        if (this.m >= 60) {
+            this.m %= 60;
+            this.h += Math.floor(hours / 60);
+        }
+
+        return time;
+    },
+    changeHours(hour) {
+        this.h = this.h + hour;
+
+        return time;
+    },
+}
+console.log(time);
+time.showTime();
+console.log(time.changeSeconds(4500));
+console.log(time.changeSeconds(8050));
+console.log(time.changeSeconds(108050)); 
+console.log(time);
+console.log(time.changeMinutes(85));
+console.log(time.changeMinutes(12));
+console.log(time);
+console.log(time.changeHours(3));
+console.log(time.changeHours(4));
+console.log(time);
+const makeTime = (h = 0, m = 0, s = 0) => {
+    (h < 9 && h >= 0) ? (h = `0${h}`) : h ;
+    (m >= 0 && m < 9) ? (m = `${m}`) : (m >= 0 && m < 60) ? m : console.log('error.Enter 0 < m < 60');
+    (s >= 0 && s < 9) ? (s = `${s}`) : (s >= 0 && s < 60) ? s : console.log('error.Enter 0 < s < 60');
+    return {
+        h, 
+        m,
+        s, 
+    };
+}
+const time1 = makeTime(6, 12, 50);   
+const time3 = makeTime(3, 47, 62);
+const time4 = makeTime(18, 38, 22);
+console.log(time1);
+console.log(time4);
+const showTime = (time = {}) => {
+    return console.log(`${time.h}:${time.m}:${time.s}`);
+}  
+showTime(time1); 
+showTime(time4);          
+</script>
+</body>
+</html>

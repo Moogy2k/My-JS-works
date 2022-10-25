@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+        .card{
+            width: 500px;
+            background: rgb(144, 207, 144);
+            
+        }
+        .card img{
+            position: relative;
+            left: 475px;
+            bottom: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="cards">
+<div class="card">
+<h1>Лощадь 1</h1>
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui sit blanditiis rem modi voluptatibus animi et laborum quaerat, laboriosam similique!</p>
+<img src="delete.gif" id="del">
+</div>
+<div class="card">
+<h1>Лощадь 2</h1>
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui sit blanditiis rem modi voluptatibus animi et laborum quaerat, laboriosam similique!</p>
+<img src="delete.gif" id="del">
+</div>
+<div class="card">
+<h1>Лощадь 3</h1>
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui sit blanditiis rem modi voluptatibus animi et laborum quaerat, laboriosam similique!</p>
+<img src="delete.gif" id="del">
+</div>
+</div>
+<script>
+        var cards = document.querySelectorAll('.cards div');
+        console.log(cards)
+        var del = document.querySelectorAll('#del')
+        del.forEach(btn => btn.addEventListener('click', closeParentBlock))
+        function closeParentBlock(){
+            this.closest('.card').remove()
+        };
+    </script>
+</body>
+</html>
